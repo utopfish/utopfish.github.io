@@ -25,7 +25,7 @@ pwd
 sudo nano /etc/profile
 #进入文件最后添加如下
 export SCALA_HOME=/home/ubuntu/sparkWork/scala-2.12.10 #此为解压scala文件夹位置
-export PATH=$PATH:$SPARK_HOME/bin
+export PATH=$PATH:$SCALA_HOME/bin
 #使环境变量生效
 source /etc/profile
 
@@ -33,7 +33,7 @@ source /etc/profile
 sudo nano ~/.bashrc
 #进入文件最后添加如下
 export SCALA_HOME=/home/ubuntu/sparkWork/scala-2.12.10 #此为解压scala文件夹位置
-export PATH=$PATH:$SPARK_HOME/bin
+export PATH=$PATH:$SCALA_HOME/bin
 #使环境变量生效
 source ~/.bashrc
 ```
