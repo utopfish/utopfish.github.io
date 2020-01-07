@@ -1,5 +1,5 @@
 ---
-title: kaggle入门教程翻译
+title: kaggle入门教程
 date: 2019-11-18 17:23:26
 tags: 机器学习 kaggle 入门 
 ---
