@@ -2,8 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74b4d603-986c-4df6-ad0f-cd8080547f25" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/utopfish.github.io.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/.idea/libraries/R_User_Library.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/.idea/markdown-navigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/.idea/source.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/.idea/_posts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/.idea/_posts.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/.idea/libraries/R_User_Library.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/kaggle入门教程.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/spark-分布式安装.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/spark-分布式安装.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/八十年代大学生的一首诗.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/八十年代大学生的一首诗.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/别人的诗.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/别人的诗.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/小诗.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/小诗.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/彩虹屁歌词.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/柳絮篇.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/柳絮篇.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/离骚.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/读《人件》.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/读木心摘抄.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/读木心摘抄.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/读波德里亚消费社会.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/读波德里亚消费社会.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/读禅与摩托车修理艺术.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/读禅与摩托车修理艺术.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/辛德勇：谈谈怎样学历史.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/about/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/assets/scala-version.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/assets/spark-shell.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/categories/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/contact/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/friends/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/tags/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/Butterfly" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/hexo-theme-matery" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/languages/zh-CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/languages/zh-CN.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/yilia" beforeDir="false" afterPath="$PROJECT_DIR$/themes/yilia" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/yilia/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/yilia/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/yilia/layout/_partial/after-footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/after-footer.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/yilia/layout/_partial/article.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/article.ejs" afterDir="false" />
@@ -63,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/source/_posts/《人件》读书笔记.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="240">
+              <first_editor relative-caret-position="78">
                 <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               </first_editor>
               <second_editor />
@@ -162,7 +207,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.deploy_git" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -250,7 +295,7 @@
   <component name="ToolWindowManager">
     <frame x="-25" y="90" width="1838" height="896" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16816647" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16816647" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -264,7 +309,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.24540682" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.8503937" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -362,7 +407,7 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/《人件》读书笔记.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="240">
+          <first_editor relative-caret-position="78">
             <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           </first_editor>
           <second_editor />
