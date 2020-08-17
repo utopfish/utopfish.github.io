@@ -1,7 +1,11 @@
 ---
 title: spark ubuntu集群安装
 date: 2019-12-04 12:49:40
-tags: spark
+categories:
+- 编程学习
+tags: 
+- spark
+- 安装
 ---
 
 ## Scala 安装 ##
