@@ -115,6 +115,9 @@ live2d:
   mobile:
     show: true
 
+#百度统计
+baidu_analytics: 5d8bb98c76006e856d36de2b44970dad
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
