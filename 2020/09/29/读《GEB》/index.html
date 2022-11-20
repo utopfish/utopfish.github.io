@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="哥德尔、艾舍尔、巴赫三块稀世瑰宝嵌为一体，集异壁之大成 一 WU谜题——三部创意曲 规则如下：  如果一个归你所有的符号串的结尾是J，则可以在后面再加上一个U 如果你有Wx，那么可以得到Wxx  例：  从WJU可以得到WJUJU从WU可以得到WUU   如果字符串中出现JJJ，可以用U替代  例：  从WJJJJ，可以得到WUJ和WJU   如果出现UU可以去掉  例：     UUU得到UWU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《GEB》">
+<meta property="og:url" content="http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/index.html">
+<meta property="og:site_name" content="非技术博客">
+<meta property="og:description" content="哥德尔、艾舍尔、巴赫三块稀世瑰宝嵌为一体，集异壁之大成 一 WU谜题——三部创意曲 规则如下：  如果一个归你所有的符号串的结尾是J，则可以在后面再加上一个U 如果你有Wx，那么可以得到Wxx  例：  从WJU可以得到WJUJU从WU可以得到WUU   如果字符串中出现JJJ，可以用U替代  例：  从WJJJJ，可以得到WUJ和WJU   如果出现UU可以去掉  例：     UUU得到UWU">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/29/0eWbJ1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/30/0uUml9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/18/0Xz9gI.jpg">
+<meta property="article:published_time" content="2020-09-29T11:15:21.000Z">
+<meta property="article:modified_time" content="2022-11-20T08:09:30.579Z">
+<meta property="article:author" content="liu Amon">
+<meta property="article:tag" content="哲学">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="侯世达">
+<meta property="article:tag" content="数论">
+<meta property="article:tag" content="推理">
+<meta property="article:tag" content="哥德尔">
+<meta property="article:tag" content="艾舍尔">
+<meta property="article:tag" content="巴赫">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/09/29/0eWbJ1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>读《GEB》</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2020/11/02/%E8%AF%BB%E3%80%8A%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D%E3%80%8B/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2020/09/29/kdtree%E7%AE%97%E6%B3%95/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&text=读《GEB》"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&is_video=false&description=读《GEB》"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=读《GEB》&body=Check out this article: http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&name=读《GEB》&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&t=读《GEB》"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-WU%E8%B0%9C%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">一 WU谜题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%95%B0%E5%AD%A6%E4%B8%AD%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">二 数学中的意义与形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%9B%BE%E5%BD%A2%E4%B8%8E%E8%A1%AC%E5%BA%95"><span class="toc-number">3.</span> <span class="toc-text">三 图形与衬底</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%B8%80%E8%87%B4%E6%80%A7%E3%80%81%E5%AE%8C%E5%85%A8%E6%80%A7%E4%B8%8E%E5%87%A0%E4%BD%95%E5%AD%A6"><span class="toc-number">4.</span> <span class="toc-text">四 一致性、完全性与几何学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E9%80%92%E5%BD%92%E7%BB%93%E6%9E%84%E5%92%8C%E9%80%92%E5%BD%92%E8%BF%87%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">五 递归结构和递归过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%84%8F%E4%B9%89%E5%9C%A8%E4%BA%8E%E4%BD%95%E5%A4%84"><span class="toc-number">6.</span> <span class="toc-text">六 意义在于何处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E5%91%BD%E9%A2%98%E6%BC%94%E7%AE%97"><span class="toc-number">7.</span> <span class="toc-text">七 命题演算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E5%8D%B0%E7%AC%A6%E6%95%B0%E8%AE%BA"><span class="toc-number">8.</span> <span class="toc-text">八 印符数论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-%E6%97%A0%E9%97%A8%E4%B8%8E%E5%93%A5%E5%BE%B7%E5%B0%94"><span class="toc-number">9.</span> <span class="toc-text">九 无门与哥德尔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-%E6%8F%8F%E8%BF%B0%E7%9A%84%E5%B1%82%E6%AC%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F"><span class="toc-number">10.</span> <span class="toc-text">十 描述的层次和计算机系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-%E5%A4%A7%E8%84%91%E5%92%8C%E6%80%9D%E7%BB%B4"><span class="toc-number">11.</span> <span class="toc-text">十一 大脑和思维</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E5%BF%83%E6%99%BA%E5%92%8C%E6%80%9D%E7%BB%B4"><span class="toc-number">12.</span> <span class="toc-text">十二心智和思维</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89-Bloop%E5%92%8CFloop%E5%92%8CGloop"><span class="toc-number">13.</span> <span class="toc-text">十三 Bloop和Floop和Gloop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B-%E8%AE%BATNT%E5%8F%8A%E6%9C%89%E5%85%B3%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%BD%A2%E5%BC%8F%E4%B8%8A%E4%B8%8D%E5%8F%AF%E5%88%A4%E5%AE%9A%E7%9A%84%E5%91%BD%E9%A2%98"><span class="toc-number">14.</span> <span class="toc-text">十四 论TNT及有关系统中形式上不可判定的命题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%94-%E8%B7%B3%E5%87%BA%E7%B3%BB%E7%BB%9F"><span class="toc-number">15.</span> <span class="toc-text">十五 跳出系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AD-%E8%87%AA%E6%8C%87%E5%92%8C%E8%87%AA%E5%A4%8D%E5%88%B6"><span class="toc-number">16.</span> <span class="toc-text">十六 自指和自复制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%83-%E4%B8%98%E5%A5%87%E3%80%81%E5%9B%BE%E7%81%B5%E3%80%81%E5%A1%94%E6%96%AF%E5%9F%BA%E5%8F%8A%E5%88%AB%E7%9A%84%E4%BA%BA"><span class="toc-number">17.</span> <span class="toc-text">十七 丘奇、图灵、塔斯基及别的人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AB-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E5%9B%9E%E9%A1%BE"><span class="toc-number">18.</span> <span class="toc-text">十八 人工智能：回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B9%9D-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E5%B1%95%E6%9C%9B"><span class="toc-number">19.</span> <span class="toc-text">十九 人工智能：展望</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81-%E6%80%AA%E5%9C%88%EF%BC%8C%E6%88%96%E7%BC%A0%E7%BB%93%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-number">20.</span> <span class="toc-text">二十 怪圈，或缠结的层次结构</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        读《GEB》
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">liu Amon</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-29T11:15:21.000Z" itemprop="datePublished">2020-09-29</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%9F%B3%E7%B5%AE%E8%AF%97%E4%B9%A6/">柳絮诗书</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag">人工智能</a>, <a class="tag-link-link" href="/tags/%E4%BE%AF%E4%B8%96%E8%BE%BE/" rel="tag">侯世达</a>, <a class="tag-link-link" href="/tags/%E5%93%A5%E5%BE%B7%E5%B0%94/" rel="tag">哥德尔</a>, <a class="tag-link-link" href="/tags/%E5%93%B2%E5%AD%A6/" rel="tag">哲学</a>, <a class="tag-link-link" href="/tags/%E5%B7%B4%E8%B5%AB/" rel="tag">巴赫</a>, <a class="tag-link-link" href="/tags/%E6%8E%A8%E7%90%86/" rel="tag">推理</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>, <a class="tag-link-link" href="/tags/%E8%89%BE%E8%88%8D%E5%B0%94/" rel="tag">艾舍尔</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>哥德尔、艾舍尔、巴赫三块稀世瑰宝嵌为一体，集异壁之大成</strong></p>
+<h2 id="一-WU谜题"><a href="#一-WU谜题" class="headerlink" title="一 WU谜题"></a>一 WU谜题</h2><p>——三部创意曲</p>
+<p>规则如下：</p>
+<ol>
+<li>如果一个归你所有的符号串的结尾是J，则可以在后面再加上一个U</li>
+<li>如果你有Wx，那么可以得到Wxx</li>
+</ol>
+<p>例：</p>
+<blockquote>
+<p>从WJU可以得到WJUJU<br>从WU可以得到WUU</p>
+</blockquote>
+<ol>
+<li>如果字符串中出现JJJ，可以用U替代</li>
+</ol>
+<p>例：</p>
+<blockquote>
+<p>从WJJJJ，可以得到WUJ和WJU</p>
+</blockquote>
+<ol>
+<li>如果出现UU可以去掉</li>
+</ol>
+<p>例：   </p>
+<blockquote>
+<p>UUU得到U<br>WUUUJJJ得到WUJJ</p>
+</blockquote>
+<p><strong>问</strong>：</p>
+<p>能够通过如上规则从WJ推出WU吗？<br><img src="https://s1.ax1x.com/2020/09/29/0eWbJ1.png" alt="0eWbJ1.png"></p>
+<p><strong>书摘</strong></p>
+<p>一个很不聪明的人，也会禁不住观察他自己在做什么，这些观察给予他关于所做的这项工作的洞察力，而计算机程序则缺乏洞察力。</p>
+<p>无论用了多久，无论多好的车，也永远不会有躲避道路上的其他汽车或障碍物的能力，永远不会知道它的主人常走的路线（距离作者写下这段话大约过了40余年的今日，自动驾驶至少已经走得远超作者的想象了）</p>
+<h2 id="二-数学中的意义与形式"><a href="#二-数学中的意义与形式" class="headerlink" title="二 数学中的意义与形式"></a>二 数学中的意义与形式</h2><p>——二部创意曲</p>
+<p>当你遇到一个你一无所知的形式系统，并且假如你希望去发现它的某种隐藏的含义，你的问题就在于给它的符号赋予一种有意义的解释。</p>
+<p>当数学家发现在他所知的两个结构中间存在同构关系时，就会感到很愉悦。正是这种同构的认识在人的头脑中创造了意义。</p>
+<p>形式系统中的符号虽然一开始没有意义，但至少在发现同构关系中，不可避免地会带上某种意义。</p>
+<p>我们那些所给出地用于符号处理地规则，是否真的与我们通常地心理推理能力相等。或者更一般地说，用某种形式系统来表达我们思维能力地水平，在理论上是否有可能。</p>
+<h2 id="三-图形与衬底"><a href="#三-图形与衬底" class="headerlink" title="三 图形与衬底"></a>三 图形与衬底</h2><p>——无伴奏的阿基里斯鸣奏曲</p>
+<p>印符操作</p>
+<ol>
+<li>读入并认出有限的符号集合中任何一个符号</li>
+<li>写下属于该集合的任何一个符号</li>
+<li>把任何一些那样的符号从一处复制到另一处</li>
+<li>删除任何一些那样的符号</li>
+<li>检测一个符号是否和另一个符号相等</li>
+<li>保存并使用一列以前产生的定理</li>
+</ol>
+<p>J方式工作者只是机械地，快乐地遵循规则，从不产生疑问<br>W工作者会趋于把符号串和对符号串地理解相混淆<br>U工作者是禅宗，拥抱一致性与不一致性</p>
+<p>公理：简单、公平、一目了然了用不着去证明的、大家都公认可的理论。<br>定理：不能一目了然的表达让大家公认，必须借助公理或逻辑 表达后才能让大家肯定的理论结论。<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/0uUml9"><img src="https://s1.ax1x.com/2020/09/30/0uUml9.png" alt="0uUml9.png"></a></p>
+<h2 id="四-一致性、完全性与几何学"><a href="#四-一致性、完全性与几何学" class="headerlink" title="四 一致性、完全性与几何学"></a>四 一致性、完全性与几何学</h2><p>——对位藏头诗</p>
+<blockquote>
+<p>法卡斯真是一个浪漫的人啊</p>
+</blockquote>
+<p>对话既有显明的意义也有隐含的意义<br>什么是音乐呢？是空气中的一系列震颤，还是大脑中相继的情感反应？ 都是<br>哥德尔定理转述到唱机中：对任何一个唱机，都有它不能播放的唱片，因为后者会导致前者共振进而间接自摧毁。</p>
+<p>哥德尔似乎发掘出了以前不被人知，但却意味深长的人类推理与机械推理之间的区别。这种生命系统的能力和无生命系统的能力间的差异，在真理概念与定理资格之间的差异上反映了出来。</p>
+<p>欧几里得的《几何原理》用来构建的东西是人类的语言，一种充满隐患的复杂又难以捉摸的媒介。（语言的定义总是不那么精确，一个词的意思定义的范围常常不够精确）</p>
+<p><strong>欧几里得五公设：</strong></p>
+<ol>
+<li>一条直线段可以联接两个点</li>
+<li>一条直线段上任何一条直线可以无限延伸</li>
+<li>给定一条直线段，可以一个端点为圆心，以此线段为半径做一个圆</li>
+<li>一切直角都彼此相等</li>
+<li>如果两条直线与第三条直线相交时，在第三条直线的某一侧三条线所夹得内角和小于两个直角之和，则这两条直线沿着这一侧延伸足够长之后必然相交。</li>
+</ol>
+<p>第五公设不如前四个那么美好，这条公设的被推翻导致了非欧几何被认可，一个真正的几何学新品种。</p>
+<p>1823年非欧被两个人同时发现，匈牙利数学家雅诺.鲍耶，21岁；俄国数学家尼古拉斯.罗巴切夫斯基，30岁。</p>
+<p>鲍耶的父亲<strong>法卡斯.鲍耶</strong>是高斯的密友，投入了大量精力去证明欧几里得第五公设，在给儿子的信中，他努力劝儿子不要思考这种东西：<br>原文如下</p>
+<blockquote>
+<p>当一个人彻底离开生活的琐碎，他就转向了崇高之最，当我看出没有人能达到黑夜的尽头时，我转身回头了……我旅经了这地狱般的死海里所有的暗礁，总是帆破桅折地回来，就是从那时起，我开始衰老了，性情也毁了。我不加思索地用我的生命和幸福去冒险——或者光荣如凯撒，或者一无所有。</p>
+</blockquote>
+<p>若你能使自己摆脱那些先入的印象，只让“直线”是那种满足新命题的产物，那你就达到一个崭新的境界。</p>
+<p>重看第五公设，设置一个否定公设，称为平行公设</p>
+<blockquote>
+<p>给定任意一直线和一个不在直线上的点，存在有且仅有一条通过那个点，且永不与前一条直线相交的直线，无论两直线延伸多远。</p>
+</blockquote>
+<p>如果断言没有这样的直线，你就得到了椭圆几何学，如何断言至少有两条直线，你就得到了双曲几何学</p>
+<p>一致性是说：”系统产生的每一个东西都是真的“，完全性是倒过来：”每一个真陈述都是由系统产生的“</p>
+<h2 id="五-递归结构和递归过程"><a href="#五-递归结构和递归过程" class="headerlink" title="五 递归结构和递归过程"></a>五 递归结构和递归过程</h2><p>——和声小迷宫</p>
+<p>阿基里德想对着神灯许愿，“我要一百个愿望”，精灵说，“我需要向元精灵和造物神申请，因为你提出的是一个元愿望”</p>
+<p>堕界：没有打出的嗝和已经熄灭的灯光所在的地方，它是一种侯室，在这里处于休眠状态的软件等着宿主回来。</p>
+<p>作曲家运用他的和声进行来控制你的感情，使你产生渴望听到主调音的愿望。</p>
+<p>尽管底层循环的结果或许不过是几针，高层循环的结果会是一大块布。</p>
+<p><strong>侯世达定律：做事所花费的时间总是比你预期的要长，即使你的预期中考虑了侯世达定律。</strong></p>
+<h2 id="六-意义在于何处"><a href="#六-意义在于何处" class="headerlink" title="六 意义在于何处"></a>六 意义在于何处</h2><p>——音程增值的卡农</p>
+<p>抽出的过程可能涉及到相当复杂的操作，以至于是你感到你放进去的信息比抽出的还多。</p>
+<p>唱片和音乐之间是平凡同构的，因为存在唱片的每一刻痕都能和音乐精准地像，而DNA和表型则是异常同构。</p>
+<p>一种观点认为，DNA离开环境毫无意义，另一种观点认为，即使离开了环境，一个来自生物体地DNA分子对起结构来说仍有一种“强制的内在逻辑”，不管怎样总能推导出它所带的信息。</p>
+<p>任何消息都分三个层次：</p>
+<ol>
+<li>框架消息</li>
+</ol>
+<p>由信息携带者总体的结构特征隐含传递的</p>
+<ol>
+<li>外在消息</li>
+</ol>
+<p>解译内在消息的解码机制</p>
+<ol>
+<li>内在消息</li>
+</ol>
+<p>就是抽取发送人所要传递的意义</p>
+<p>对艺术作品而言，努力传递风格也许是最重要的</p>
+<p>一旦我们在某处发现一个非常规律的几何结构中“包裹着”非周期性晶体结构，那里就可能隐藏着一些内在信息。</p>
+<p>在你能使用任何规则之前，你必须有另一个规则来告诉你如何使用这些规则。</p>
+<p><strong>智能喜爱模式化，厌恶随机性。</strong></p>
+<h2 id="七-命题演算"><a href="#七-命题演算" class="headerlink" title="七 命题演算"></a>七 命题演算</h2><p>——半音阶幻想曲，及互格</p>
+<blockquote>
+<p>主要讲关于逻辑推导的基础，以及如何机械地使用递归和基础逻辑进行命题的演算</p>
+</blockquote>
+<p>把两个真句子结合起来并不保险</p>
+<p>规则清单：</p>
+<ol>
+<li>联接规则：如果x和y是定理，那么&lt;x$ \bigwedge $y&gt;是个定理。</li>
+<li>分隔规则：如果&lt;x$ \bigwedge $y&gt;是一个定理，那么x和y二者都是定理。</li>
+<li>双弯号规则：”~~“这个串可以从任何定理中删除，也可以嵌入到任何定理中，只要所得的结果本身是良构串。</li>
+<li>幻想规则：如果假定x是一个定理时能推导出y来，那么&lt;x$ \rightarrow $y&gt;是一个定理。</li>
+<li>搬入规则”：在一个幻想里面，任何来自于“显示性”高一个层次的定理都可以拿进并使用。</li>
+<li>分离规则：如果x和&lt;x$ \rightarrow $y&gt;都是定理，那么y是一个定理。。</li>
+<li>易位规则： &lt;x$ \rightarrow $y&gt;与&lt;y~$ \rightarrow $~x&gt;是可以互换的。</li>
+<li>德.摩根规则：&lt;~x$ \bigwedge $~y&gt;与~&lt;x$ \bigvee  $y&gt;可以互换。</li>
+<li>思维陀螺规则：&lt;x$ \bigvee  $y&gt;与&lt;~x$ \rightarrow  $y&gt;可以互换。(如果~x为真，则能推出y为真。若x，y都为真，什么都没有)</li>
+</ol>
+<p>从某种角度看，命题演算是浪费时间的，因为它告诉我们的东西都微不足道。<br>有什么机械的方式来判断定理和非定理吗？</p>
+<p>你永远无法维护你的推理模式，到了一定步骤就只能靠信仰了。——刘易斯.卡罗尔</p>
+<p>一个人永远也不能给出一个最终的、绝对的证明，去阐明在某个系统中的一个证明是正确的。当然，一个人可以给出一个关于证明的证明，或者关于一个证明的证明的证明——但是，最外层的系统有效性总还是一个未经证明的假设，是凭我们的信仰来接收的</p>
+<p>矛盾是在生活中各个领域中取得澄清和进步的一个主要源泉。</p>
+<h2 id="八-印符数论"><a href="#八-印符数论" class="headerlink" title="八 印符数论"></a>八 印符数论</h2><p>——螃蟹卡农</p>
+<blockquote>
+<p>本章主要是在构建一个推导系统，相比最开始的WUJ系统更为复杂。</p>
+</blockquote>
+<p>“口味无须争辩”——拉丁谚语<br>印符数论(Typographical Number Theory)简称TNT</p>
+<p>中间对皮亚诺五公设使用了之前神灯精灵进行了改写。改写后五条皮亚诺公设如下：</p>
+<ol>
+<li>怪物是一个神怪；</li>
+<li>每个怪物都有一个元(它也是一个神怪)；</li>
+<li>怪物不是任何神怪的元；</li>
+<li>不同的神怪有不同的元；</li>
+<li>如果怪物有X，并且每个神怪都把它的X递送给它的元，那么所有的神怪都得到X。</li>
+</ol>
+<p>原皮亚诺五公设：</p>
+<ol>
+<li>1是自然数；</li>
+<li>每个确定的自然数都有一个确定的后继$a’$,$a’$也是自然数；</li>
+<li>如果b，c都是a的后继，那b=c；</li>
+<li>1不是任何自然的后继；</li>
+<li>任意关于自然数的命题，如果证明了它对自然数1是对的，又假定它对自然数n为真时，可以证明它对n’ 也真，那么，命题对所有自然数都真。</li>
+</ol>
+<h2 id="九-无门与哥德尔"><a href="#九-无门与哥德尔" class="headerlink" title="九 无门与哥德尔"></a>九 无门与哥德尔</h2><p>——一首无的奉献</p>
+<blockquote>
+<p><strong>讲了一些关于禅宗的公案，超越逻辑，带来混乱，最终至于无我的境界的</strong></p>
+</blockquote>
+<p>禅宗的信徒要寻求顿悟——就是一种“无我”状态。他不可以“执”于任何客体、思想或人。<br>也许正是幽默才使禅宗富于教益，我想如果你十分严肃地看待这些事，那你既会有所得也会有所失。</p>
+<p>佛教禅宗地基本教条之一事：没有任何办法能刻画禅宗是什么。</p>
+<p>很可能公案的目的恰恰就在于引起困惑，因为人的心智处于困惑状态时就会再某种程度上不合逻辑地运转，只有跳出逻辑，摆脱理论，人才能跃入顿悟境地。</p>
+<p><strong>禅宗反对二元的斗争</strong><br>如果词语不好，思维也不好，那么什么是好的？这样问已经是彻头彻尾的二元论了。</p>
+<blockquote>
+<p>一师因一僧问曰：“如何是道？”<br>师曰：“正眼前是道。”<br>“如何我不自见？”<br>“汝自虑故。”<br>“师知之否？”<br>师曰：“汝但见二分，言‘我不自见’，‘师见之’，汝目障矣。”<br>“无我无你，可得见否？”<br>“无我无你，谁欲见之？”  </p>
+</blockquote>
+<p>禅宗和尚拔对一个行将圆寂的门人写了一封信，信中说:“汝之无终之终，一似雪片溶于清气之中”。</p>
+<p>它漂浮于堕界中，于没打出的嗝再一起，于没人读的故事中的人物在一起，(与山中无人观赏的花在一起)……</p>
+<p>桶中无水，水中无月。</p>
+<p>一旦对一个形式系统进行了哥德尔配数，结果是我们可以把对任一形式系统的研究转成数论工作。</p>
+<h2 id="十-描述的层次和计算机系统"><a href="#十-描述的层次和计算机系统" class="headerlink" title="十 描述的层次和计算机系统"></a>十 描述的层次和计算机系统</h2><p>——前奏曲</p>
+<blockquote>
+<p><strong>终于到了熟悉的计算机了，说了关于抽象的层次和编译器自举的情况</strong></p>
+</blockquote>
+<p>有一种比直接描述每处棋子的位置层次更高的描述，而大师就是以某种方式生成了这样一个棋局的心智表象。</p>
+<h2 id="十一-大脑和思维"><a href="#十一-大脑和思维" class="headerlink" title="十一 大脑和思维"></a>十一 大脑和思维</h2><p>——蚂蚁赋格</p>
+<blockquote>
+<p>高层系统和底层系统之间应该存在中间系统，这是从低级到高级的关键，分子移动和风之间不存在中间系统，所以就没有产生智能。</p>
+</blockquote>
+<p>整体论说“整体大于各部分之和”<br>简化论说“如果你理解了一个整体的各部分，以及把这些部分‘整合’起来的机制，那么你就理解了整个系统“。<br>无：通过废问这个问题，揭示出更广泛的真理，存在着某种更大的领域，使得整体论与简化论的解释都适合。  </p>
+<p>作为个体来看，即使每个蚂蚁的活动路线似乎是很随意的，然而就大量的蚂蚁来说，从这种乱糟糟的状态中，还是能看出存在着一些总的趋向。</p>
+<p>这种层次太微观，当你从微观的角度进行思考时，你必然会漏掉更大规模上的现象。</p>
+<p>在识别时好像感到有什么东西在你的脑海里”结晶“了。<br>结晶：在这个图像里，介质中无数微观的互不相干的活动缓慢地造成区域的一致性。</p>
+<p>我们从电视屏幕感知到的不仅仅是点，还有组块。</p>
+<p>对同一个脑的同一个状态来说，低层次的描述——面向神经原的——要变成高层次的描述——面向模块的。</p>
+<p><strong>昆虫的符号</strong></p>
+<p>在昆虫脑海中有的不是随机应变，而是写在基因中的if-then语句。</p>
+<h2 id="十二心智和思维"><a href="#十二心智和思维" class="headerlink" title="十二心智和思维"></a>十二心智和思维</h2><p>——英、法、德、中组曲</p>
+<blockquote>
+<p>使用自想国，即将中国地图城市名字抹掉，自己给每个城市村庄添加名字。每个人的自想国都不相同。但是一些重要地方是相同的，同时如果比较不同人的心智也是难题，现在的知识图谱可能解决一些问题，可惜我了解不多。这一章作者也多次提到了另一位人工智能的大佬明斯基，果然还是绕不开这位大神。</p>
+</blockquote>
+<p>心智和思维之间能彼此映射吗？</p>
+<p>如何将思维相似的大脑联系起来——具体说就是:</p>
+<ol>
+<li>所有可选符号的对应（符号是比神经元高一级的子系统，是模块的）。</li>
+<li>符号触发模式的对应。</li>
+</ol>
+<p>虽然别人和我们在一些重要方面有差异，但仍然在某些深入的和重要的方法和我们”相同“——这是我们智能的核心。</p>
+<p><strong>初见卢卡斯</strong></p>
+<p>意思悖论的出现是因为有意识物除了能意识到别的东西，还能意识到自身，并且的确不能看作是可分离的。</p>
+<p>复杂程度经常引起质的不同。</p>
+<p>产生新的心智有两种方法：传统的生孩子，和新的方法即建造一个非常非常复杂的系统。</p>
+<h2 id="十三-Bloop和Floop和Gloop"><a href="#十三-Bloop和Floop和Gloop" class="headerlink" title="十三 Bloop和Floop和Gloop"></a>十三 Bloop和Floop和Gloop</h2><p>——咏叹调及其种种变奏</p>
+<blockquote>
+<p>Bloop是有界循环（bounded loop），Floop是升级版（Free loop）可以进行有界循环和无界循环。当Floop进行求解时可能出现三种情况  </p>
+<ol>
+<li>程序结束，输出Yes</li>
+<li>跳出封闭循环，输出No</li>
+<li>未能跳出封闭循环，程序无法结束（应该输出No）</li>
+</ol>
+<p>Gloop是去除限制的Floop，能对程序的状态是否结束进行判断，但遗憾的是Gloop只能是神话了</p>
+</blockquote>
+<p>你没有看到明显的无穷，是因为它已在你把握的图像中被隐含地捕获了。</p>
+<p>自然只是给我们提供大量现实，它们表面上杂乱无章，直到我们选择某种有意义的现象，而且把它们从特定的，关系不大的关系中抽象出来，只有那时它们才会展现出光彩夺目的真实结构。</p>
+<p>在Floop可计算函数可以被分为两类：1）哪些能用有终止Floop程序计算的被称为”一般递归的“，2）那些只能用无终止Floop程序计算的被称为”部分递归的“</p>
+<p><strong>康托尔的对角线论证</strong><br>“实数有无穷多个，因此显然不能列在一个有限长的登记表中。”<br>假设我们能给出无穷长的表，其中每一个正整数N对于于0和1之间的一个实数r(N)而且0和1之间的每一个实数都将出现在表中的某一个位置。设想表如下：<br>r(1):.<strong>1</strong>41592653……<br>r(2):.3<strong>3</strong>3333333……<br>r(3):.71<strong>8</strong>281828……<br>r(4):.414<strong>2</strong>13562……<br>r(5):.5000<strong>0</strong>0000……</p>
+<p>对角线上的1、3、8、2、0……用它们减去1（设0-1=9）,得到一个数d：<br>0.02719……<br>这时，根据我们的构造方法有：<br>d的第一位不同于r(1)的第一位；<br>d的第二位不同于r(2)的第二位；<br>……等等<br>因此我们有<br>d不同于r(1);<br>d不同于r(2);<br>……等等。<br>就是说d不在表中。</p>
+<h2 id="十四-论TNT及有关系统中形式上不可判定的命题"><a href="#十四-论TNT及有关系统中形式上不可判定的命题" class="headerlink" title="十四 论TNT及有关系统中形式上不可判定的命题"></a>十四 论TNT及有关系统中形式上不可判定的命题</h2><p>——G弦上的咏叹调</p>
+<blockquote>
+<p>主要讲哥德尔配数，证明对，哥德尔第二定理，超自然数，希尔伯特第十问题等，完全不懂，之后如果能了解一些相关的知识之后再反过来看吧 Orz</p>
+</blockquote>
+<p>“由六个字组成”由六个字组成</p>
+<h2 id="十五-跳出系统"><a href="#十五-跳出系统" class="headerlink" title="十五 跳出系统"></a>十五 跳出系统</h2><p>——生日大合唱哇哇哇乌啊乌啊乌啊……</p>
+<blockquote>
+<p>假如一个TNT系统中存在矛盾G，那能否将G作为补丁加入到TNT公理中，从而解决矛盾呢？不行，因为TNT+G系统会产生新的矛盾G‘，再把G’加入又会有新的矛盾产生……对于系统的超越，可能真是一个神话，有人说就是看了GEB之后对所有关于meta（元）的东西都格外感兴趣，元分析，元游戏似乎都是一种高级的哲学。也许《鹿鼎记》也能算是金庸对他武侠的元分析，或者说解构。</p>
+</blockquote>
+<p>哥德尔的论证的这种扰乱神智的可重复性，已经成为很多人——尤其是卢卡斯——的做战武器，想以此说明人类智能具有的某种难以捉摸，不可言状的特点。因此机械自动机——计算机——不能达到人类智能。</p>
+<p>我们人类能否跳出自身——或者是，计算机程序是否能跳出自身呢？这仍是一个现代的神话。</p>
+<p>广告和框架手法<br>一位著名专业演员做完了一个广告，摄影机还在对着他，他就明显地做出解除了任务地状态，沉浸于享用他刚刚宣传地那种产品地实际快乐中。</p>
+<p>观众越是把一些次要地细节当作检验标准，广告商就迫得越急。</p>
+<p>在禅宗里，我们也看到了这种对超出系统的概念的神往。</p>
+<h2 id="十六-自指和自复制"><a href="#十六-自指和自复制" class="headerlink" title="十六 自指和自复制"></a>十六 自指和自复制</h2><p>——一位烟民富于启发性的思想</p>
+<blockquote>
+<p>副标题来自于抽烟的巴赫，这章也提到了另一位画家马格里特，画了一堆香烟雪茄相关的话，还有就是烟草花叶病毒。这章主要说的是自噬和自复制，说了很多DNA复制，中心法则相关的内容。并且企图将TNT系统和DNA复制系统进行同构。由其惊奇的是发现，<strong>十五种氨基酸的功能集和计算机的指令集极其相似</strong>。需要有一个翻译DNA的方式来帮助DNA的自复制。生命的起源可能是左脚踩右脚起飞的惊奇。这章看得不是很懂，中心法则大概还记得，懂了作者大意，细节有机会在来扣。</p>
+</blockquote>
+<h2 id="十七-丘奇、图灵、塔斯基及别的人"><a href="#十七-丘奇、图灵、塔斯基及别的人" class="headerlink" title="十七 丘奇、图灵、塔斯基及别的人"></a>十七 丘奇、图灵、塔斯基及别的人</h2><p>——的确该赞美螃蟹</p>
+<blockquote>
+<p>如何在之前的系统不够强大的情况下，发展人工智能呢？拉玛奴衍这种天才而为经过多数学训练的人，给了灵感。能否从其他混乱的路，直觉的路研究出的系统与数学推导的系统有相同的功能，并且更强呢？图灵测试棒的地方在于不管你如何实现，只要你能骗过检测员就好</p>
+</blockquote>
+<p>思维的每一个方面，都可以看成是从高级的层次上描述的一个位于较低层次、受某些简单的乃至形式的支配规则的系统。</p>
+<p>数学家只与那些简单的、考究的形式系统的打交道，在那些系统中，一切东西都是有着极为清晰的定义，而大脑与此大相径庭。</p>
+<p>想要了解大脑这样的复杂系统，唯一的方法是在越来越高的层次上对之组块，因而每一步都要损失一些严格性。</p>
+<p>在现实生活的许多场合，演绎推理之所以不适用，并不是因为它会得到错误答案，而是因为它会得到过多的正确而无关的断言。</p>
+<p><strong>丘奇定理</strong>：没有一个切实可靠的方法总能区分开TNT的定理和非定理。</p>
+<p><strong>塔斯基-丘奇-图灵定理</strong>：没有一种切实可靠的方法总能区分开真数论语句和假数论语句。</p>
+<p><strong>丘奇-图灵论题，大众过程形式</strong>：假设有一种方法，一个有感知能力的生物可以根据它逐个把数分成两类。又假设这种方法总能在有穷的时间内得到结果，并且对给定的数它总能给出相同的结果。同时，还要假定这种方法可以通过语言由一个有感知能力的生物不走样地传递给另一个有感知的生物。那么存在一个有终止的Floop程序，它给出的答案恰好和这个有感知的生物所得的答案一样。</p>
+<p>世上有一种奇怪的悖论效果：一件你认为不会促使人们轻信，而是会使易轻信的人变得开始怀疑的事，实际上却具有相反的效果。</p>
+<p><strong>人工智能论题：随着智能机的发展，它的基础机制会逐渐收敛于人类智能的基础机制。换句话说，一切智能都是同一主题下的变奏</strong></p>
+<h2 id="十八-人工智能：回顾"><a href="#十八-人工智能：回顾" class="headerlink" title="十八 人工智能：回顾"></a>十八 人工智能：回顾</h2><p>——施德鲁，人设计的玩具</p>
+<blockquote>
+<p>绕不开的图灵，说了九种图灵预测的反对意见。很有意思，里面的帕里与医生让我联想GAN，狗和肉骨头说的是最优化搜索的问题。里面还总结了几个大框架，机器翻译，博弈（跳棋，象棋，围棋等……），数学定理证明，计算机视觉，听觉，自然语言理解，自然语言生成，计算机创作（作诗，作画），类别，学习（参数调节，概念形成），现在计算机领域的研究似乎都没有逃出几十年前的划下的范围。</p>
+<p>里面提到的塞缪尔跳棋程序，有必要一看，这似乎是搜索算法中比较经典的，它解决了跳棋问题，只是在国际象棋中效果不好，这或许对之后的蒙特卡洛搜索算法也有启示。</p>
+</blockquote>
+<p>对于图灵测试，我们假定最好的策略就是设法提供那种人会很自然地给出的答案。</p>
+<p>图灵假设的九种反对意见</p>
+<ol>
+<li>神学上的： 思维是上帝给男人和女人的，没有给动物和机器，所以机器不能有思维。</li>
+<li>鸵鸟式的： 机器思维的后果将很可怕，让我们希望并且相信它们不能做到吧。</li>
+<li>数学上的： 卢卡斯的论点</li>
+<li>基于意识的： 除非机器有自己的思想和情感写出一首诗或者一只曲，否则我们就不能说机器等于大脑</li>
+<li>基于各种缺陷的： “就算你能造出一台机器做出你所提到的那些事，你也绝不可能提出一台能做到X的机器”，X包括善良、机智、优美、友好……</li>
+<li>洛夫莱斯的反对意见： 分析机并不自称能创造任何事，它能做任何我们知道怎么命令它的事。</li>
+<li>基于神经连续性的论点： 神经状态肯定不是一台离散状态的机器，我们不能指望用一个离散状态系统来模拟神经元系统的行为。</li>
+<li>基于行为非形式化的： “如果每个人都有一个确定的指导规则集来控制他的生活，那他就无异于机器了，但并不存在这种规则，因此人也就不是机器。”</li>
+<li>基于超感官知觉的： 假设我们进行模拟游戏，两个被问者一个是能接受心灵感应的，另一个是机器人。询问人可以问：“我右手里这张扑克牌什么颜色？”那个有心灵感应的人400次询问中对了130次，机器人随机猜测也许对了103次，这样，询问人就能做正确判断了。</li>
+</ol>
+<p>第九个问题再图灵论文被重印时删除了，这点特别有意思，图灵也不想承认真的有特异功能，但他的求实精神要求他接受他认为是强有力地支持了超感官知觉的统计证据。</p>
+<p><strong>塞谬尔德跳棋程序</strong>：同时使用动态（超前搜索）和静态（非超前搜索）方法。将动态搜索所得的知识被部分编码于静态估值函数的参数中了。基本想法就是把复杂的动态估值方法“压缩”到简单得多也有效得多的静态估值函数中来。</p>
+<p>棋艺高超的棋手在选择棋步时所依赖的心智过程，往往连他们本人也无法全部揭示——他们在使用自己的直觉。现在（1979年）还没人知道怎么揭示自己的所有直觉。</p>
+<p><strong>你若是对某个东西感到厌倦，这往往不是由于你穷尽了它所有可能的行为，而是你发现了包含其全部行为的空间的界限。</strong></p>
+<p>狗和肉骨头<br>一只叫山迪的狗，看到栅栏外有一个肉骨头，它有两种方法</p>
+<ol>
+<li>（a）跑到栅栏前；（b）通过它；（c）跑向肉骨头</li>
+<li>（a）跑到栅栏门；（b）通过门；（c）跑向肉骨头</li>
+</ol>
+<p>第一个方法的第二个子问题太难了，狗无法解决，而第二个方法第一步看起来是把问题复杂化</p>
+<p>一切都取决于如何表示“问题空间”——也就是说，把什么看成是对问题的“简化”（即朝总目标的行动），把什么看成是对问题的“复杂化”（即背离总目标的行动）</p>
+<p>对于最优化问题的解法：</p>
+<ol>
+<li>试着以某种随机的方式离开目标，希望能发现隐藏的门。</li>
+<li>设法发现一个新的问题表示空间。</li>
+</ol>
+<p>第一种方法似乎太慢，而第二种方法似乎太难（现在的基因算法等是指就是好一些的第一种方法，棘轮法通过隔一次稍微调节一下目标函数，是用的第二种解法）</p>
+<h2 id="十九-人工智能：展望"><a href="#十九-人工智能：展望" class="headerlink" title="十九 人工智能：展望"></a>十九 人工智能：展望</h2><p>——对实</p>
+<blockquote>
+<p>哪些事是我们以为差点发生的，哪些是不会发生的呢？这种对现实的其他情况的想象也许是人智能的来源。也是一切美好的源头。<br>双目独眼龙</p>
+</blockquote>
+<p>虚拟的比赛在月器上进行时的情景</p>
+<p>如果心智在一个否定句中除了晦暗的障碍以外什么都看不到，那么该是多平淡乏味啊！一个活生生的心智总能发现通往可能性世界的窗口。</p>
+<p>试想，如果我们没有这种滑出真实世界、进入“假如”世界中的创造能力，那么我们的精神生活将是何等的贫乏啊。</p>
+<p>从数学中借助“常量”，“参量”，“变量”来便是事情条件可变的程度。</p>
+<p>很难设想一个通用算法，能从相互碰撞的符号中构造出有意义的新符号来。就像两本书的词重新随机组合能得到另一本书的可能性一样。</p>
+<p>归根结底，在严谨的卡农艺术中，为了达到典雅和优美，偶尔也难免出现不完全的模拟。</p>
+<p>如果能有如此功能的程序必须得自己走进世界，在纷繁的生活中抗争，并每时每刻体验到来自生活的感受，它必须懂得暗夜里凉风所带来的喜悦与孤独，懂得对于带来温暖爱抚的手掌的渴望，懂得遥远异地的不可企及，还要能体验到一个人死去后引起的心碎和升华。它必须明了放弃与厌世、悲伤和失望、决心和胜利、虔诚与敬畏。</p>
+<h2 id="二十-怪圈，或缠结的层次结构"><a href="#二十-怪圈，或缠结的层次结构" class="headerlink" title="二十 怪圈，或缠结的层次结构"></a>二十 怪圈，或缠结的层次结构</h2><p>——树懒卡农</p>
+<blockquote>
+<p>怪圈的出现，可能是在怪圈之外有一个看不见的不受干扰的层次造成的这个情况。艾舍尔的《画手》就是作者画了两只相互画着对方的手</p>
+</blockquote>
+<p>一旦你无法跳出系统寻求更高的权威时，那唯一的办法就是求助于哪些看上去没有用规则定义清楚的力量，而它们才是最高层次规则的唯一来源——这就是底层规则。在找不到更高级的法院来裁判时，求助于社会普遍反应也是好办法。</p>
+<p><strong>“寻找关于自我的知识就像踏上了这样一条旅途……它并非无处不通，它不能被描绘在任何图纸上，它永无尽头，它不可描述。”</strong></p>
+<p>与主体-客体二分法密切相关的是符号-对象二分法，这已经由路德维希.维特根斯坦深入地讨论过了。</p>
+<p>谁也没办法抑制好奇心产生地疑虑。</p>
+<p>艾舍尔《画廊》中中心有一个“瑕疵点”写着他的签名，虽然看着像一个缺陷，但这个缺陷是在我们的期望之中的，因为艾舍尔无法完成那一部分，除非他违背他作画时的一贯规律。</p>
+<p>——六部无插入赋格</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/0Xz9gI"><img src="https://s1.ax1x.com/2020/10/18/0Xz9gI.jpg" alt="0Xz9gI.jpg"></a></p>
+<p>螃蟹的客人 查尔斯.巴比奇</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-WU%E8%B0%9C%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">一 WU谜题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%95%B0%E5%AD%A6%E4%B8%AD%E7%9A%84%E6%84%8F%E4%B9%89%E4%B8%8E%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">二 数学中的意义与形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%9B%BE%E5%BD%A2%E4%B8%8E%E8%A1%AC%E5%BA%95"><span class="toc-number">3.</span> <span class="toc-text">三 图形与衬底</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%B8%80%E8%87%B4%E6%80%A7%E3%80%81%E5%AE%8C%E5%85%A8%E6%80%A7%E4%B8%8E%E5%87%A0%E4%BD%95%E5%AD%A6"><span class="toc-number">4.</span> <span class="toc-text">四 一致性、完全性与几何学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E9%80%92%E5%BD%92%E7%BB%93%E6%9E%84%E5%92%8C%E9%80%92%E5%BD%92%E8%BF%87%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">五 递归结构和递归过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%84%8F%E4%B9%89%E5%9C%A8%E4%BA%8E%E4%BD%95%E5%A4%84"><span class="toc-number">6.</span> <span class="toc-text">六 意义在于何处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E5%91%BD%E9%A2%98%E6%BC%94%E7%AE%97"><span class="toc-number">7.</span> <span class="toc-text">七 命题演算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E5%8D%B0%E7%AC%A6%E6%95%B0%E8%AE%BA"><span class="toc-number">8.</span> <span class="toc-text">八 印符数论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-%E6%97%A0%E9%97%A8%E4%B8%8E%E5%93%A5%E5%BE%B7%E5%B0%94"><span class="toc-number">9.</span> <span class="toc-text">九 无门与哥德尔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-%E6%8F%8F%E8%BF%B0%E7%9A%84%E5%B1%82%E6%AC%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F"><span class="toc-number">10.</span> <span class="toc-text">十 描述的层次和计算机系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-%E5%A4%A7%E8%84%91%E5%92%8C%E6%80%9D%E7%BB%B4"><span class="toc-number">11.</span> <span class="toc-text">十一 大脑和思维</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E5%BF%83%E6%99%BA%E5%92%8C%E6%80%9D%E7%BB%B4"><span class="toc-number">12.</span> <span class="toc-text">十二心智和思维</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89-Bloop%E5%92%8CFloop%E5%92%8CGloop"><span class="toc-number">13.</span> <span class="toc-text">十三 Bloop和Floop和Gloop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B-%E8%AE%BATNT%E5%8F%8A%E6%9C%89%E5%85%B3%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%BD%A2%E5%BC%8F%E4%B8%8A%E4%B8%8D%E5%8F%AF%E5%88%A4%E5%AE%9A%E7%9A%84%E5%91%BD%E9%A2%98"><span class="toc-number">14.</span> <span class="toc-text">十四 论TNT及有关系统中形式上不可判定的命题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%94-%E8%B7%B3%E5%87%BA%E7%B3%BB%E7%BB%9F"><span class="toc-number">15.</span> <span class="toc-text">十五 跳出系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AD-%E8%87%AA%E6%8C%87%E5%92%8C%E8%87%AA%E5%A4%8D%E5%88%B6"><span class="toc-number">16.</span> <span class="toc-text">十六 自指和自复制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%83-%E4%B8%98%E5%A5%87%E3%80%81%E5%9B%BE%E7%81%B5%E3%80%81%E5%A1%94%E6%96%AF%E5%9F%BA%E5%8F%8A%E5%88%AB%E7%9A%84%E4%BA%BA"><span class="toc-number">17.</span> <span class="toc-text">十七 丘奇、图灵、塔斯基及别的人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AB-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E5%9B%9E%E9%A1%BE"><span class="toc-number">18.</span> <span class="toc-text">十八 人工智能：回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B9%9D-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E5%B1%95%E6%9C%9B"><span class="toc-number">19.</span> <span class="toc-text">十九 人工智能：展望</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81-%E6%80%AA%E5%9C%88%EF%BC%8C%E6%88%96%E7%BC%A0%E7%BB%93%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-number">20.</span> <span class="toc-text">二十 怪圈，或缠结的层次结构</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&text=读《GEB》"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&is_video=false&description=读《GEB》"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=读《GEB》&body=Check out this article: http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&title=读《GEB》"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&name=读《GEB》&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/09/29/%E8%AF%BB%E3%80%8AGEB%E3%80%8B/&t=读《GEB》"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    liu Amon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

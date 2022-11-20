@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="逻辑回归&amp;交叉熵逻辑回归（Logistic Regression是一种广义线性回归。sigmoid函数有两个好处，一是可以将实数范围的数缩放到 (0,1) 范围满足我们的要求，二是有很好的求导特性：$g’(z)&#x3D;g(z)(1-g(z))$ g(z)&#x3D;\frac{1}{1+e^{-z}}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法面试题整理">
+<meta property="og:url" content="http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="非技术博客">
+<meta property="og:description" content="逻辑回归&amp;交叉熵逻辑回归（Logistic Regression是一种广义线性回归。sigmoid函数有两个好处，一是可以将实数范围的数缩放到 (0,1) 范围满足我们的要求，二是有很好的求导特性：$g’(z)&#x3D;g(z)(1-g(z))$ g(z)&#x3D;\frac{1}{1+e^{-z}}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/28/0EWeT1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/28/0EWonJ.png">
+<meta property="article:published_time" content="2020-08-31T12:52:27.000Z">
+<meta property="article:modified_time" content="2022-11-20T08:09:30.579Z">
+<meta property="article:author" content="liu Amon">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/09/28/0EWeT1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>算法面试题整理</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2020/09/28/%E8%AF%BB%E3%80%8A%E6%9C%89%E9%99%90%E4%B8%8E%E6%97%A0%E9%99%90%E7%9A%84%E6%B8%B8%E6%88%8F%E3%80%8B/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2020/08/17/%E8%AF%BB%E3%80%8A%E5%8D%83%E9%9D%A2%E8%8B%B1%E9%9B%84%E3%80%8B/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&text=算法面试题整理"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&is_video=false&description=算法面试题整理"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=算法面试题整理&body=Check out this article: http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&name=算法面试题整理&description=&lt;h2 id=&#34;逻辑回归-amp-交叉熵&#34;&gt;&lt;a href=&#34;#逻辑回归-amp-交叉熵&#34; class=&#34;headerlink&#34; title=&#34;逻辑回归&amp;amp;交叉熵&#34;&gt;&lt;/a&gt;逻辑回归&amp;amp;交叉熵&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;逻辑回归（Logistic Regression&lt;/strong&gt;是一种广义线性回归。&lt;br&gt;sigmoid函数有两个好处，一是可以将实数范围的数缩放到 (0,1) 范围满足我们的要求，二是有很好的求导特性：$g’(z)=g(z)(1-g(z))$&lt;/p&gt;
+&lt;script type=&#34;math/tex; mode=display&#34;&gt;g(z)=\frac{1}{1+e^{-z}}&lt;/script&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&t=算法面试题整理"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92-amp-%E4%BA%A4%E5%8F%89%E7%86%B5"><span class="toc-number">1.</span> <span class="toc-text">逻辑回归&amp;交叉熵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LR-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">LR 怎么优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GBDT"><span class="toc-number">3.</span> <span class="toc-text">GBDT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GBDT%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%A0%91"><span class="toc-number">3.1.</span> <span class="toc-text">GBDT梯度下降树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%80%E8%88%AC%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-number">4.</span> <span class="toc-text">模型一般评估指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">过拟合解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-number">6.</span> <span class="toc-text">常见网络模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM"><span class="toc-number">7.</span> <span class="toc-text">SVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">8.</span> <span class="toc-text">决策树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%87%E6%A0%B7%E6%96%B9%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">采样方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#batch-normalization"><span class="toc-number">10.</span> <span class="toc-text">batch normalization</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        算法面试题整理
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">liu Amon</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-08-31T12:52:27.000Z" itemprop="datePublished">2020-08-31</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/">编程学习</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a>, <a class="tag-link-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="tag-link-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="逻辑回归-amp-交叉熵"><a href="#逻辑回归-amp-交叉熵" class="headerlink" title="逻辑回归&amp;交叉熵"></a>逻辑回归&amp;交叉熵</h2><p><strong>逻辑回归（Logistic Regression</strong>是一种广义线性回归。<br>sigmoid函数有两个好处，一是可以将实数范围的数缩放到 (0,1) 范围满足我们的要求，二是有很好的求导特性：$g’(z)=g(z)(1-g(z))$</p>
+<script type="math/tex; mode=display">g(z)=\frac{1}{1+e^{-z}}</script><span id="more"></span>
+<p>线性回归我们采用均方误差（MSE）作为损失函数，而逻辑回归（分类算法）采用交叉熵（Cross Entropy）。</p>
+<p>要了解交叉熵就必须从如下的一些基础概念和公式推导开始</p>
+<p><strong>联合概率:</strong></p>
+<blockquote>
+<p>联合概率指的是包含多个条件且所有条件同时成立的概率，记作P(X=a,Y=b)或P(a,b)</p>
+</blockquote>
+<p><strong>边缘概率:</strong></p>
+<blockquote>
+<p>边缘概率是与联合概率对应，P(X=a)或P(Y=b)，这类仅与单个随机变量有关的概率称为边缘概率</p>
+</blockquote>
+<p>联合概率与边缘概率的关系</p>
+<p>$P(X=a)=sum_{b}(X=a,Y=b)$</p>
+<p>$P(Y=b)=sum_{a}(X=a,Y=b)$</p>
+<p><strong>条件概率:</strong></p>
+<blockquote>
+<p>条件概率表示在条件Y=b成立的情况下，X=a的概率，记作P(X=a|Y=b)或P(a|b)</p>
+</blockquote>
+<p>联合概率、边缘概率与条件概率之间的关系:</p>
+<blockquote>
+<p>$P(X=a|Y=b)=\frac{P(X=a,Y=b)}{P(Y=b)}$</p>
+</blockquote>
+<p>公式推交叉熵，概率分布1：$p(x)$;概率分布2:$q(x)$</p>
+<script type="math/tex; mode=display">Hp(q)=\sum p(x)log_2^{\frac{1}{q(x)}}
+       =-\sum p(x)log_2^{q(x)}</script><p><strong>信息熵:</strong></p>
+<blockquote>
+<p>表达说清楚一件事需要的最少信息量。</p>
+</blockquote>
+<p><strong>交叉熵:</strong></p>
+<blockquote>
+<p>描述了两个不同的概率分布p和q的差异程度！</p>
+</blockquote>
+<p>如果两个分布是一样的，则交叉熵和熵的差异是 0。我们把这个差异叫做相对熵 (Kullback–Leibler divergence), 也叫 KL 距离，KL 散度。Dq(p)=Hq(p)−H(p)。</p>
+<h2 id="LR-怎么优化"><a href="#LR-怎么优化" class="headerlink" title="LR 怎么优化"></a>LR 怎么优化</h2><ol>
+<li><p>梯度下降（BGD）<br>他要想下山，最好的方法就是每次环顾一下四周，选择当前最陡的方向step，然后再环顾一下四周，选择最陡的方向step</p>
+</li>
+<li><p>随机梯度下降SGD（stochastic Gradient Descent）与Mini-batch SGD<br>随机梯度下降就是每次求梯度时只随机选择一条样本，这样大大减少了计算量，但是这次的方向很肯不是最好的。Mini-batch SGD就是每次选取批量样本做梯度下降作用就体现出来了，随机选取一个样本进行梯度下降，更新到最优输入下一个样本，不需要全部样本也可以得到很好的解，加快速度的同时也节约内存，最重要的效果还和GD差不多。</p>
+</li>
+<li><p>牛顿法<br>牛顿法的原理是使用函数f(x)的泰勒级数的前面几项来寻找方程 f(x)=0 的根。</p>
+</li>
+</ol>
+<p>首先，选择一个接近函数 f (x)零点的 x0，计算相应的 f (x0) 和切线斜率f  ‘ (x0)（这里f ‘ 表示函数 f  的导数）。然后我们计算穿过点(x0,  f  (x0)) 并且斜率为f ‘(x0)的直线和 x 轴的交点的x坐标，也就是求如下方程的解：</p>
+<script type="math/tex; mode=display">x\times f'(x_0)+f(x_0)-x_0\times f'(x_0)=0</script><p>我们将新求得的点的 x 坐标命名为x1，通常x1会比x0更接近方程f  (x) = 0的解。因此我们现在可以利用x1开始下一轮迭代。迭代公式可化简为如下所示：</p>
+<script type="math/tex; mode=display">x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}</script><h2 id="GBDT"><a href="#GBDT" class="headerlink" title="GBDT"></a>GBDT</h2><p><strong>Boosting算法，Bagging算法介绍</strong><br>Boosting家族最典型的代码属于AdaBoosting以及提升树（典型的GBDT）。<br>Bagging家族最典型的代表是Random Forest（随机森林，以下简称RF）。Boosting中的弱学习器之间存在依赖关系，而Bagging没有.</p>
+<p><strong>bagging主要思想：</strong></p>
+<ol>
+<li>数据集中抽取新的训练集。每次从原始数据集中使用有放回采样数据的方法,抽取n个样本(在原始数据集中，有些样本可能被重复采样，而有些样本可能一次都未被采样到)。共进行k次抽取，得到k个新的数据集(k个新训练集之间是相互独立的)，新的数据集的大小和原始数据集的大小相等。</li>
+<li>用一个新的训练集得到一个模型，k个新的训练集总共可以得到k个新的模型</li>
+<li>分类问题：将(2)中得到的k个模型采用投票方式得到分类结果；对回归问题：计算(2)中模型的均值作为最后的结果(所有模型的重要性相同！！！)</li>
+</ol>
+<p><strong>boosting主要思想(adaboosting)：</strong></p>
+<p>不同的分类器通过串行训练来获得的，每个新分类器都根据已训练出的分类器的性能来进行训练。boosting是通过关注被已有分类器错分的那些数据来获得新的分类器.</p>
+<ol>
+<li>对每一次的训练数据样本赋予一个权重，并且每一次样本的权重分布依赖上一次的分类结果。</li>
+<li>基分类器之间采用序列的线性加权方式来组合。</li>
+</ol>
+<p><strong>bagging方法与boosting方法对比</strong><br>样本选择上：</p>
+<ol>
+<li>bagging方法：新的训练集是在原始训练集中采用有放回的方式采样样本的，从原始训练集中选取的每个新的训练集之间是相互独立的。</li>
+<li>boosting方法：每一次的训练集不变，只是训练集中的每个样本在分类器中的权重发生变化，而权重是根据上一次的分类结果进行调整的。</li>
+</ol>
+<p><strong>样本权重上：</strong></p>
+<ol>
+<li>bagging方法：使用均匀选取样本，每个样本的权重相同。</li>
+<li>boosting方法：根据错误率不断调整样本的权重，错误率越大，权重越大。</li>
+</ol>
+<p><strong>预测函数：</strong></p>
+<ol>
+<li>bagging方法：所有预测函数的权重相等。</li>
+<li>boosting方法：每个弱分类器都有相应的权重，对分类误差小的分类器会有更大的权重</li>
+</ol>
+<p><strong>并行计算：</strong></p>
+<ol>
+<li>bagging方法：各个预测函数可以并行计算。</li>
+<li>boosting方法：各个预测函数只能顺序生成，因为后一个模型需要前一个模型的输出结果</li>
+</ol>
+<h3 id="GBDT梯度下降树"><a href="#GBDT梯度下降树" class="headerlink" title="GBDT梯度下降树"></a>GBDT梯度下降树</h3><p>GBDT基本原理是通过多轮迭代，每轮迭代产生一个弱分类器（利用cart回归树构建），每个分类器在上一轮分类器的残差基础上进行训练。<br>对弱分类器的要求一般是足够简单，并且是低方差和高偏差的。因为训练的过程是通过降低偏差来不断提高最终分类器的精度。</p>
+<p>关于方差与偏差见下图：<br><img src="https://s1.ax1x.com/2020/09/28/0EWeT1.png" alt="0EWeT1.png"></p>
+<p><strong>GBDT为什么使用cart回归树而不是使用分类树</strong></p>
+<p>GBDT主要是利用残差逼近的方式，这就意味每棵树的值是连续的可叠加的，这一点和回归树输出连续值不谋而合，如果采用分类树，那么残差逼近进行叠加就会使得这种叠加没有意义，比如男+男+女=到底是男是女。这个是GBDT基本原理决定的。</p>
+<p><strong>GBDT与RF的区别</strong><br>相同点： </p>
+<ol>
+<li>GBDT与RF都是采用多棵树组合作为最终结果；这是两者共同点。</li>
+</ol>
+<p>不同点： </p>
+<ol>
+<li>RF的树可以是回归树也可以是分类树，而GBDT只能是回归树。 </li>
+<li>RF中树是独立的，相互之间不影响，可以并行；而GBDT树之间有依赖，是串行。 </li>
+<li>RF最终的结果是有多棵树表决决定，而GBDT是有多棵树叠加组合最终的结果。 </li>
+<li>RF对异常值不敏感，原因是多棵树表决，而GBDT对异常值比较敏感，原因是当前的错误会延续给下一棵树。 </li>
+<li>RF是通过减少模型的方差来提高性能，而GBDT是减少模型的偏差来提高性能的。</li>
+<li>RF不需要进行数据预处理，即特征归一化。而GBDT则需要进行特征归一化。</li>
+</ol>
+<p><strong>xgboost</strong></p>
+<p>XGBoost本质上还是一个GBDT，但是力争把速度和效率发挥到极致，所以叫X (Extreme) GBoosted。包括前面说过，两者都是boosting方法。</p>
+<p><strong>xgboost和传统gbdt的区别？</strong></p>
+<p>如果不考虑工程实现、解决问题上的一些差异，XGBoost与GBDT比较大的不同就是目标函数的定义，XGBoost在工程实现上做了大量的优化。总的来说，两者之间的区别和联系可以总结成以下几个方面。</p>
+<ol>
+<li>gbdt是机器学习算法，XGBoost是该算法的工程实现。</li>
+<li>CART作为基分类器时，XGBoost显式地加入了正则项来控制模型的复杂度，有利于防止过拟合，从而提高模型的泛化能力。</li>
+<li>T在模型训练时只使用了代价函数的一阶导数信息，XGBoost对代价函数进行二阶泰勒展开，可以同时使用一阶和二阶导数。</li>
+<li>GBDT采用CART作为基分类器，XGBoost支持多种类型的基分类器，比如线性分类器。</li>
+<li>GBDT在每轮迭代时使用全部的数据，XGBoost则采用了与随机森林相似的策略，支持对数据进行采样。</li>
+<li>GBDT没有设计对缺失值进行处理，XGBoost能够自动学习出缺失值的处理策略。</li>
+</ol>
+<p><strong>XGBoost要用泰勒展开，优势在哪里？</strong></p>
+<p>XGBoost使用了一阶和二阶偏导, 二阶导数有利于梯度下降的更快更准. 使用泰勒展开取得函数做自变量的二阶导数形式, 可以在不选定损失函数具体形式的情况下, 仅仅依靠输入数据的值就可以进行叶子分裂优化计算, 本质上也就把损失函数的选取和模型算法优化/参数选择分开了. 这种去耦合增加了XGBoost的适用性, 使得它按需选取损失函数, 可以用于分类, 也可以用于回归。</p>
+<h2 id="模型一般评估指标"><a href="#模型一般评估指标" class="headerlink" title="模型一般评估指标"></a>模型一般评估指标</h2><p>TP:正确的肯定数目<br>FN:漏报，没有找到正确匹配的数目<br>FP:误报，没有的匹配不正确<br>TN:正确拒绝的非匹配数目<br><strong>精确率(Precision)</strong><br>查准。就是预测出来为正样本的结果中，有多少是正确分类。</p>
+<script type="math/tex; mode=display">precision=\frac{TP}{TP+FP}</script><p><strong>召回率（recall）</strong><br>真实为正样本的结果中，有多少是正确分类。</p>
+<script type="math/tex; mode=display">recall=\frac{TP}{TP+FN}</script><p><strong>F1-Score</strong><br>它同时兼顾了分类模型的精确率和召回率</p>
+<script type="math/tex; mode=display">f_1=2\times \frac{precision\times recall}{precision+reacalll}</script><p><strong>KS(Kolmogorov-Smirnov)</strong><br>指标衡量的是好坏样本累计分部之间的差值。<br>KS的计算步骤如下：</p>
+<ol>
+<li>计算每个评分区间的好坏账户数。</li>
+<li>计算每个评分区间的累计好账户数占总好账户数比率(good%)和累计坏账户数占总坏账户数比率(bad%)。</li>
+<li>计算每个评分区间累计坏账户占比与累计好账户占比差的绝对值（累计good%-累计bad%），然后对这些绝对值取最大值即得此评分卡的K-S值。</li>
+</ol>
+<p><strong>roc曲线</strong></p>
+<p>接收者操作特征(receiveroperating characteristic),roc曲线上每个点反映着对同一信号刺激的感受性。</p>
+<p><strong>AUC(Area under Curve)</strong><br>Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>
+<p><strong>AUC的含义，为啥不用召回率精准率而用AUC</strong><br>主要看能否选择的指标能否支持选择模型，具体详见<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/30643044/answer/554917862">知乎链接</a></p>
+<p><strong>杂</strong><br>精准率、召回率、ACC、AUC、F1、KS、熵系列、信息增益、CTR、CVR、MSE系列。其中AUC是重点中的重点，被问了好多次，而且很细节，包括本质意义、计算方法等等，注意AUC是有两种计算方法的，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/peizhe123/p/5081559.html">这里</a>有介绍。</p>
+<h2 id="过拟合解决方法"><a href="#过拟合解决方法" class="headerlink" title="过拟合解决方法"></a>过拟合解决方法</h2><p>降低模型复杂程度，dropout、bagging、正则、earlystop，数据增强、交叉验证等。Dropout本质也是个bagging。</p>
+<h2 id="常见网络模型"><a href="#常见网络模型" class="headerlink" title="常见网络模型"></a>常见网络模型</h2><p><strong>lstm是什么的升级？</strong><br>是rnn的升级<br><strong>lstm解决了什么问题？</strong><br>LSTM 通过刻意的设计来避免长期依赖问题。记住长期的信息在实践中是 LSTM 的默认行为，而非需要付出很大代价才能获得的能力！<br>解决长序列训练过程中的梯度消失和梯度爆炸问题。简单来说，就是相比普通的RNN，LSTM能够在更长的序列中有更好的表现。</p>
+<p><strong>attetion 机制</strong><br>是一种能让模型对重要信息重点关注并充分学习吸收的技术，它不算是一个完整的模型，应当是一种技术，能够作用于任何序列模型中。</p>
+<p>Attention机制最早是应用于图像领域，2014年google mind团队发表的这篇论文《Recurrent Models of Visual Attention》让其开始火了起来，他们在RNN模型上使用了attention机制来进行图像分类，然后取得了很好的性能。</p>
+<p>attention机制的本质是从人类视觉注意力机制中获得灵感，当我们发现一个场景经常在某部分出现自己想观察的东西时，我们就会进行学习在将来再出现类似场景时把注意力放到该部分上。这可以说就是注意力机制的本质内容了。具体到模型中就是把序列中各个元素分配一个权重系数<br><strong>embedding的深层含义是什么</strong><br>Embedding在数学上表示一个maping</p>
+<p><strong>l1 l2正则</strong></p>
+<ol>
+<li><p>L1正则化是指权值向量ww中各个元素的绝对值之和，通常表示为∣w∣1</p>
+</li>
+<li><p>L2正则化是指权值向量ww中各个元素的平方和然后再求平方根（可以看到Ridge回归的L2正则化项有平方符号），通常表示为∣w∣2</p>
+</li>
+</ol>
+<p>L1正则化和L2正则化可以看做是损失函数的惩罚项。所谓『惩罚』是指对损失函数中的某些参数做一些限制。对于线性回归模型，使用L1正则化的模型建叫做Lasso回归，使用L2正则化的模型叫做Ridge回归（岭回归）。</p>
+<p>L1正则化可以产生稀疏权值矩阵，即产生一个稀疏模型，可以用于特征选择<br>L2正则化可以防止模型过拟合（overfitting）；一定程度上，L1也可以防止过拟合,<br>二维平面下L2正则化的函数图形是个圆（绝对值的平方和，是个圆），与方形相比，被磨去了棱角。<br>这就是为什么L2正则化不具有稀疏性的原因，因为不太可能出现多数w都为0的情况。<br>拟合过程中通常都倾向于让权值尽可能小，最后构造一个所有参数都比较小的模型。因为一般认为参数值小的模型比较简单，能适应不同的数据集，也在一定程度上避免了过拟合现象</p>
+<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><p>是在特征空间上的间隔最大的线性分类器</p>
+<p>SVM学习的基本想法是求解能够正确划分训练数据集并且几何间隔最大的分离超平面。如下图所示，<br><img src="https://s1.ax1x.com/2020/09/28/0EWonJ.png" alt="0EWonJ.png"></p>
+<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><p>ID3: 由增熵（Entropy）原理来决定那个做父节点，那个节点需要分裂。对于一组数据，熵越小说明分类结果越好。</p>
+<p>C4.5：通过对ID3的学习，可以知道ID3存在一个问题，那就是越细小的分割分类错误率越小，所以ID3会越分越细，为了避免过拟合问题，优化项要除以分割太细的代价，这个比值叫做信息增益率</p>
+<p>CART：分类回归树，用GINI指数来决定如何分裂</p>
+<h2 id="采样方法"><a href="#采样方法" class="headerlink" title="采样方法"></a>采样方法</h2><p>主要有过采样和欠采样。<br>过采样：Smote方法及各种变种<br>欠采样：ensemble、nearMiss、Tomeklink、ENN<br>还有复杂分布的采样会用到MCMC。</p>
+<h2 id="batch-normalization"><a href="#batch-normalization" class="headerlink" title="batch normalization"></a>batch normalization</h2><p>机器学习领域有个很重要的假设：IID独立同分布假设，就是假设训练数据和测试数据是满足相同分布的，这是通过训练数据获得的模型能够在测试集获得好的效果的一个基本保障。那BatchNorm的作用是什么呢？<strong>BatchNorm就是在深度神经网络训练过程中使得每一层神经网络的输入保持相同分布的。</strong></p>
+<p>为什么深度神经网络<strong>随着网络深度加深，训练起来越困难，收敛越来越慢？</strong>这是个在DL领域很接近本质的好问题。很多论文都是解决这个问题的，比如ReLU激活函数，再比如Residual Network，BN本质上也是解释并从某个不同的角度来解决这个问题的。</p>
+<p><strong>“Internal Covariate Shift”问题</strong></p>
+<p>接着引入covariate shift的概念：如果ML系统实例集合<X,Y>中的输入值X的分布老是变，这不符合IID假设（独立同分布），网络模型很难<strong>稳定的学规律</strong>，这不得引入迁移学习才能搞定吗，我们的ML系统还得去学习怎么迎合这种分布变化啊。对于深度学习这种<em>包含很多隐层的网络结构，在训练过程中，因为各层参数不停在变化，所以每个隐层都会面临covariate shift的问题</em>，也就是在训练过程中，隐层的输入分布老是变来变去，这就是所谓的“Internal Covariate Shift”，Internal指的是深层网络的隐层，是发生在网络内部的事情，而不是covariate shift问题只发生在输入层。</p>
+<p>我们知道，如果是多层的线性函数变换其实这个深层是没有意义的，因为多层线性网络跟一层线性网络是等价的。这意味着网络的表达能力下降了，这也意味着深度的意义就没有了。所以BN为了保证非线性的获得，对变换后的满足均值为0方差为1的x又进行了scale加上shift操作(y=scale*x+shift)，<strong>每个神经元增加了两个参数scale和shift参数</strong>，这两个参数是通过训练学习到的，意思是通过scale和shift把这个值从标准正态分布左移或者右移一点并长胖一点或者变瘦一点，每个实例挪动的程度不一样，这样等价于非线性函数的值从正中心周围的线性区往非线性区动了动。<strong>核心思想应该是想找到一个线性和非线性的较好平衡点，既能享受非线性的较强表达能力的好处，又避免太靠非线性区两头使得网络收敛速度太慢。</strong></p>
+<p><strong>知识蒸馏</strong></p>
+<p>通过引入与教师网络（teacher network：复杂、但推理性能优越）相关的软目标（soft-target）作为total loss的一部分，以诱导学生网络（student network：精简、低复杂度）的训练，实现知识迁移（knowledge transfer）。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92-amp-%E4%BA%A4%E5%8F%89%E7%86%B5"><span class="toc-number">1.</span> <span class="toc-text">逻辑回归&amp;交叉熵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LR-%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">LR 怎么优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GBDT"><span class="toc-number">3.</span> <span class="toc-text">GBDT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GBDT%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%A0%91"><span class="toc-number">3.1.</span> <span class="toc-text">GBDT梯度下降树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%80%E8%88%AC%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-number">4.</span> <span class="toc-text">模型一般评估指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">过拟合解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-number">6.</span> <span class="toc-text">常见网络模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM"><span class="toc-number">7.</span> <span class="toc-text">SVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">8.</span> <span class="toc-text">决策树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%87%E6%A0%B7%E6%96%B9%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">采样方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#batch-normalization"><span class="toc-number">10.</span> <span class="toc-text">batch normalization</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&text=算法面试题整理"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&is_video=false&description=算法面试题整理"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=算法面试题整理&body=Check out this article: http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&title=算法面试题整理"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&name=算法面试题整理&description=&lt;h2 id=&#34;逻辑回归-amp-交叉熵&#34;&gt;&lt;a href=&#34;#逻辑回归-amp-交叉熵&#34; class=&#34;headerlink&#34; title=&#34;逻辑回归&amp;amp;交叉熵&#34;&gt;&lt;/a&gt;逻辑回归&amp;amp;交叉熵&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;逻辑回归（Logistic Regression&lt;/strong&gt;是一种广义线性回归。&lt;br&gt;sigmoid函数有两个好处，一是可以将实数范围的数缩放到 (0,1) 范围满足我们的要求，二是有很好的求导特性：$g’(z)=g(z)(1-g(z))$&lt;/p&gt;
+&lt;script type=&#34;math/tex; mode=display&#34;&gt;g(z)=\frac{1}{1+e^{-z}}&lt;/script&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/08/31/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/&t=算法面试题整理"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    liu Amon
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
